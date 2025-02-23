@@ -1,0 +1,67 @@
+<div class="container">
+  <h1 class="section-title">Paleta de Colores</h1>
+
+  <div class="color-picker-section">
+    <div class="color-picker-wrapper">
+      <input
+        type="color"
+        [(ngModel)]="selectedColor"
+        (change)="updateColors()"
+        class="color-picker-input">
+    </div>
+    <div class="selected-color-display">
+      <div
+        class="selected-color-preview"
+        [style.backgroundColor]="selectedColor">
+      </div>
+      <button class="hex-button" (click)="copyToClipboard(selectedColor)">
+        {{selectedColor}}
+      </button>
+    </div>
+    <button class="random-color-button" (click)="generateRandomColor()">
+      Generar Color Aleatorio
+    </button>
+  </div>
+
+  <div class="complementary-section">
+    <h2 class="section-title">Colores Complementarios</h2>
+    <div class="color-grid">
+      <div class="color-card" *ngFor="let color of complementaryColors">
+        <div class="color-box" [style.backgroundColor]="color">
+          <span class="color-hex">{{color}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contrasting-section">
+    <h2 class="section-title">Colores Contrarios</h2>
+    <div class="color-grid">
+      <div class="color-card" *ngFor="let color of contrastingColors">
+        <div class="color-box" [style.backgroundColor]="color">
+          <span class="color-hex">{{color}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="palette-section">
+    <h2 class="section-title">Gama de Colores Compatibles</h2>
+    <div class="palette-grid">
+      <div class="color-card" *ngFor="let color of colorPalette">
+        <div class="color-box" [style.backgroundColor]="color">
+          <span class="color-hex">{{color}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="history-section">
+    <h2 class="section-title">Historial de Colores</h2>
+    <div class="history-list">
+      <div class="history-item" *ngFor="let item of colorHistory1">
+        <div class="history-color-preview" [style.backgroundColor]="item.color"></div>
+        <p>{{item.color}} - {{item.timestamp | date:'short'}}</p>
+    </div>
+  </div>
+</div>
